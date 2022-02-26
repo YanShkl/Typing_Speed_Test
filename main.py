@@ -62,7 +62,7 @@ class TypingSpeed:
         self.entry_box = Entry(self.window, bg=WHITE, bd=0, font=("Arial", 12), justify="center", width=30)
         self.entry_box.focus()
         self.entry_box.grid(row=3, column=1, columnspan=6)
-        self.window.bind("<space>", self.user_type)
+        self.window.bind("<space>", self.user_input)
         self.window.bind("<Return>", self.start)
 
         self.restart_btn_img = PhotoImage(file="images/reload.png")
@@ -126,10 +126,10 @@ class TypingSpeed:
                 wpm_count += 1
                 cpm_count += len(i)
         self.wpm_value.config(text=wpm_count)
-        print(f"user_type: {user_words}")
+        print(f"user_input: {user_words}")
         print(f"display_words: {showed_words}")
 
-    def user_type(self, event):
+    def user_input(self, event):
         user_words.append(self.entry_box.get().title().strip())
         self.entry_box.delete(0, "end")
         if len(user_words) % 8 == 0:
