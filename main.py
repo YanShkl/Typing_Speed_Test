@@ -74,18 +74,15 @@ class TypingSpeed:
 
     # ---------------------------- FUNCTIONS ------------------------------- #
 
-    def start(self, event):
+    def start(self, *event):
         self.showed_words = []
         self.user_words = []
         self.wpm_count = 0
         self.wpm_value.config(text=self.wpm_count)
         self.entry_box.config(state="normal")
         self.start_timer()
-        try:
-            self.random_words()
-        except AttributeError:
-            pass
-        print('Start worked')
+        self.random_words()
+
         self.window.unbind("<Return>")
 
     def start_timer(self):
