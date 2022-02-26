@@ -78,7 +78,6 @@ class TypingSpeed:
         self.showed_words = []
         self.user_words = []
         self.wpm_count = 0
-        self.cpm_count = 0
         self.wpm_value.config(text=self.wpm_count)
         self.entry_box.config(state="normal")
         self.start_timer()
@@ -119,12 +118,11 @@ class TypingSpeed:
 
     def compare(self):
         # count WPM
-        global wpm_count, cpm_count
+        global wpm_count
         self.entry_box.config(state="disabled")
         for i in user_words:
             if i in showed_words:
                 wpm_count += 1
-                cpm_count += len(i)
         self.wpm_value.config(text=wpm_count)
         print(f"user_input: {user_words}")
         print(f"display_words: {showed_words}")
